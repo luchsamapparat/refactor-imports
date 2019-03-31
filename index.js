@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const jscodeshift = require('jscodeshift/src/Runner');
 const path = require('path');
 
