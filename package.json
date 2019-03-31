@@ -1,0 +1,18 @@
+{
+  "name": "refactor-imports",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jscodeshift": "0.6.3",
+    "recast": "0.17.3",
+    "transform-imports": "2.0.0",
+    "yargs": "13.1.0"
+  },
+  "resolutions": {
+    "recast": "0.17.3"
+  }
+}
