@@ -1,11 +1,11 @@
 {
   "name": "refactor-imports",
   "version": "1.0.0",
-  "description": "",
+  "description": "Easily refactor imports in TypeScript files via the CLI.",
   "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["typescript", "import", "refactoring", "codemod"],
+  "author": "Marvin Luchs <marvin.luchs@holisticon.de>",
+  "license": "MIT",
   "dependencies": {
     "jscodeshift": "0.6.3",
     "transform-imports": "2.1.0",

@@ -88,3 +88,7 @@ import { bar } from '@my-libs/even-older';
 // after
 import { foo, bar } from '@my-libs/new';
 ```
+
+## Acknowledgements
+
+The heavy-lifting of this tool is done by Facebook's [jscodeshift](https://github.com/facebook/jscodeshift) and the [transform-imports](https://github.com/suchipi/transform-imports) codemod written by [suchipi](https://github.com/suchipi). Thanks for doing the actual work!
