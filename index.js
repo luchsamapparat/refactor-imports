@@ -40,7 +40,7 @@ jscodeshift.run(
     {
         extensions: 'ts',
         parser: 'ts',
-        dry: false,
+        dry: options.dryRun,
         transformOptions: {
             fuzzyMatch: options.fuzzyMatch,
             currentImportSources: options.currentImportSources,
