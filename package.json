@@ -3,13 +3,25 @@
   "version": "1.0.0",
   "description": "Easily refactor imports in TypeScript files via the CLI.",
   "main": "index.js",
-  "keywords": ["typescript", "import", "refactoring", "codemod"],
+  "type": "module",
+  "keywords": [
+    "typescript",
+    "import",
+    "refactoring",
+    "codemod"
+  ],
   "author": "Marvin Luchs <marvin.luchs@holisticon.de>",
   "license": "MIT",
   "dependencies": {
-    "jscodeshift": "0.6.3",
-    "transform-imports": "2.1.0",
-    "yargs": "13.1.0"
+    "jscodeshift": "17.1.2",
+    "transform-imports": "2.2.0",
+    "yargs": "17.7.2"
   },
-  "bin": "./index.js"
+  "bin": "./index.js",
+  "devDependencies": {
+    "typescript": "5.7.3"
+  },
+  "engines": {
+    "node": "22"
+  }
 }

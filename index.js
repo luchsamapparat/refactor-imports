@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-const jscodeshift = require('jscodeshift/src/Runner');
-const path = require('path');
+import jscodeshift from 'jscodeshift/src/Runner.js';
+import { resolve } from 'node:path';
+import { hideBin } from 'yargs/helpers';
+import yargs from 'yargs/yargs';
 
-const options = require('yargs')
+const options = yargs(hideBin(process.argv))
     .option('path', {
         alias: 'p',
         demandOption: true
@@ -35,11 +37,11 @@ const options = require('yargs')
     .argv;
 
 jscodeshift.run(
-    path.resolve(__dirname, 'transform.js'),
+    resolve(import.meta.dirname, 'transform.js'),
     [options.path],
     {
-        extensions: 'ts',
-        parser: 'ts',
+        extensions: 'ts,tsx',
+        parser: 'tsx',
         dry: options.dryRun,
         transformOptions: {
             fuzzyMatch: options.fuzzyMatch,
