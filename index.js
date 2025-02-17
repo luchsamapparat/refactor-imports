@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import jscodeshift from 'jscodeshift/src/Runner.js';
-import { resolve } from 'node:path';
-import { hideBin } from 'yargs/helpers';
-import yargs from 'yargs/yargs';
+const jscodeshift = require('jscodeshift/src/Runner.js');
+const { resolve } = require('node:path');
+const { hideBin } = require('yargs/helpers');
+const yargs = require('yargs/yargs');
 
 const options = yargs(hideBin(process.argv))
     .option('path', {
@@ -37,7 +37,7 @@ const options = yargs(hideBin(process.argv))
     .argv;
 
 jscodeshift.run(
-    resolve(import.meta.dirname, 'transform.js'),
+    resolve(__dirname, 'transform.js'),
     [options.path],
     {
         extensions: 'ts,tsx',

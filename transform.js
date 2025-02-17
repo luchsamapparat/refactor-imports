@@ -1,7 +1,7 @@
-import tsxParser from 'jscodeshift/parser/tsx.js';
-import transformImports from 'transform-imports';
+const tsxParser = require('jscodeshift/parser/tsx.js');
+const transformImports = require('transform-imports');
 
-export default (file, api, options) => {
+module.exports = (file, api, options) => {
     const { currentImportSources, targetImportSource, onlyImportedExports, fuzzyMatch } = options.transformOptions;
 
     try {
