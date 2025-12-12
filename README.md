@@ -12,19 +12,22 @@ npm install refactor-imports -g
 
 ```
 Options:
-  --help                        Show help                              [boolean]
-  --version                     Show version number                    [boolean]
-  --path, -p                                                          [required]
-  --current-import-sources, -s                                [array] [required]
-  --target-import-source, -t                                          [required]
-  --only-imported-exports, -e                              [array] [default: []]
-  --dry-run, -d                                       [boolean] [default: false]
-  --fuzzy-match, -f                                   [boolean] [default: false]
+      --help                    Show help                              [boolean]
+      --version                 Show version number                    [boolean]
+  -p, --path                                                          [required]
+  -s, --current-import-sources                                [array] [required]
+  -t, --target-import-source
+  -r, --resolve-import-mapping                        [boolean] [default: false]
+      --tsconfig-path, --tsc
+  -e, --only-imported-exports                              [array] [default: []]
+  -d, --dry-run                                       [boolean] [default: false]
+  -f, --fuzzy-match                                   [boolean] [default: false]
+      --parser                           [choices: "ts", "tsx"] [default: "tsx"]
 ```
 
 ### Required Arguments
 
-You need to pass the `path` (`-p`) to the files that should be refactored, the `current-import-sources` (`-s`) and the `target-import-source` (`-t`).
+You need to pass the `path` (`-p`) and the `current-import-sources` (`-s`). Additionally, you must provide either `target-import-source` (`-t`) OR both `resolve-import-mapping` (`-r`) and `tsconfig-path` (`-tsc`).
 
 ```bash
 refactor-imports -p ./src -s "my-old-lib" -t "my-new-lib"
@@ -87,6 +90,41 @@ import { bar } from '@my-libs/even-older';
 
 // after
 import { foo, bar } from '@my-libs/new';
+```
+
+### Resolve Import Mappings from TypeScript Config
+
+You can automatically resolve path aliases defined in your `tsconfig.json` to relative paths by using the `resolve-import-mapping` (`-r`) option along with `tsconfig-path` (`-tsc`).
+
+```bash
+refactor-imports -p ./src -s "@my-app" -r -tsc ./tsconfig.json
+```
+
+Given a `tsconfig.json` with path mappings like:
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@my-app/*": ["./src/*"]
+    }
+  }
+}
+```
+
+```ts
+// before
+import { foo } from '@my-app/utils/helpers';
+
+// after
+import { foo } from './utils/helpers'; // or '../utils/helpers' depending on file location
+```
+
+### Parser Option
+
+By default, the tool uses the `tsx` parser to support JSX syntax. If you're working with plain TypeScript files without JSX, you can use the `ts` parser.
+
+```bash
+refactor-imports -p ./src -s "my-old-lib" -t "my-new-lib" --parser ts
 ```
 
 ## Acknowledgements
