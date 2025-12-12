@@ -12,7 +12,7 @@
   "author": "Marvin Luchs <marvin.luchs@holisticon.de>",
   "license": "MIT",
   "dependencies": {
-    "jscodeshift": "17.1.2",
+    "jscodeshift": "17.3.0",
     "transform-imports": "2.2.0",
     "yargs": "17.7.2"
   },
